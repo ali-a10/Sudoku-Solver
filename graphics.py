@@ -1,16 +1,19 @@
 import pygame
-from pygame.version import PygameVersion
+from Board import *
 
+# from rough import *
+
+boardObj = Board()
 ############## MAKE SURE LINES END AT COL 80?
-board = [  [7, 0, 8, 0, 0, 0, 0, 0 ,0], 
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-                        [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-                        [0, 0, 0, 0, 0, 0, 0, 9 ,3]  ]
+# board = [  [7, 0, 8, 0, 0, 0, 0, 0 ,0], 
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
+#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
+#                         [0, 0, 0, 0, 0, 0, 0, 9 ,3]  ]
 pygame.init()
 WIDTH, HEIGHT = 680, 780
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -66,10 +69,10 @@ def draw_window():
     
     nums_font = pygame.font.SysFont('calibri', 50, False)
 
-    for i in range(len(board)):
-        for j in range(len(board[i])):
+    for i in range(boardObj.size):
+        for j in range(boardObj.size):
             # if (i==0):
-            nums_text = nums_font.render(str(board[i][j]), 1, (0, 255, 0))
+            nums_text = nums_font.render(str(boardObj.board[i][j]), 1, BLUE)
             if (2<j<6):
                 WINDOW.blit(nums_text, (17+24+j*72, 15+14+i*72))
             elif (5<j):
@@ -77,12 +80,6 @@ def draw_window():
             else:
                 WINDOW.blit(nums_text, (15+24+j*72.2, 15+14+i*72))
                 
-
-
-    # for i in range(9):
-    #     if i%2 == 0:
-    #         pygame.draw.line(WINDOW, GREEN, (45, 15+i*smallsquare_width), (45, 15+smallsquare_width+i*smallsquare_width))
-
     pygame.display.update()
 
 
@@ -98,5 +95,5 @@ def main():
         
         draw_window()
         
-main()
+# main()
 # print(pygame.font.get_fonts())

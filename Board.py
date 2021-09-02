@@ -29,7 +29,14 @@ class Board:
                     print(str(self.board[i][j]) + " ", end="")
 
 
-    def set_board(self, numofslots):
+    def set_board(self, difficulty):
+        if difficulty == 1:
+            numofslots = randint(36, 39)
+        elif difficulty == 2:
+            numofslots = randint(30, 32)
+        else:
+            numofslots = randint(23, 25)
+
         starting_slots_pos = []
         j = 0
         while j < numofslots:

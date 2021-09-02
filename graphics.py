@@ -4,6 +4,7 @@ from Board import *
 # from rough import *
 
 boardObj = Board()
+boardObj.set_board(1)
 ############## MAKE SURE LINES END AT COL 80?
 # board = [  [7, 0, 8, 0, 0, 0, 0, 0 ,0], 
 #                         [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
@@ -32,17 +33,19 @@ def draw_window():
     # bottom bar
     pygame.draw.rect(WINDOW, BLACK, (0, HEIGHT-100, WIDTH, 100))
     
-    
-    
     # border:
     border_width = 10
     box_width = WIDTH - 2*border_width #650
-    grid = pygame.transform.scale(pygame.image.load('grid.png'), (WIDTH-border_width*2, HEIGHT-border_width*2-100))
+    grid = pygame.transform.scale(pygame.image.load('grid.png'), (660, 660))#(WIDTH-border_width*2-2, HEIGHT-border_width*2-100-2))
     WINDOW.blit(grid, (border_width, border_width))
     pygame.draw.rect(WINDOW, RED, (0, 0, border_width, HEIGHT-100)) #left
     pygame.draw.rect(WINDOW, RED, (WIDTH-border_width, 0, border_width, HEIGHT-100)) #right
     pygame.draw.rect(WINDOW, RED, (0, 0, WIDTH, border_width)) #top
     pygame.draw.rect(WINDOW, RED, (0, HEIGHT-100-border_width, WIDTH, border_width)) #bottom
+
+    # pygame.draw.line(WINDOW, GREEN, (0, 20), (14, 20))
+    # pygame.draw.line(WINDOW, GREEN, (665, 20), (679, 20))
+
     # # big squares  (each square is 214 x 214)
     # bigline_width = 3
     # bigsquare_width = (box_width - 2*bigline_width) / 3  #214
@@ -72,13 +75,27 @@ def draw_window():
     for i in range(boardObj.size):
         for j in range(boardObj.size):
             # if (i==0):
-            nums_text = nums_font.render(str(boardObj.board[i][j]), 1, BLUE)
-            if (2<j<6):
-                WINDOW.blit(nums_text, (17+24+j*72, 15+14+i*72))
-            elif (5<j):
-                WINDOW.blit(nums_text, (15.8+24+j*72.2, 15+14+i*72))
-            else:
-                WINDOW.blit(nums_text, (15+24+j*72.2, 15+14+i*72))
+            if boardObj.board[i][j] != 0:
+                nums_text = nums_font.render(str(boardObj.board[i][j]), 1, BLUE)
+                if (2<j<6):
+                    # WINDOW.blit(nums_text, (17+24+j*72, 15+14+i*72))
+                    w = 17+24+j*72
+                    h = 15+14+i*72
+                elif (5<j):
+                    # WINDOW.blit(nums_text, (19+24+j*72.2, 15+14+i*72))
+                    w = 19+24+j*72.2
+                    h = 15+14+i*72
+                else:
+                    # WINDOW.blit(nums_text, (12+24+j*72.2, 15+14+i*72))
+                    w = 12+24+j*72.2
+                    h = 15+14+i*72
+
+                if 2<i<6:
+                    h += 4
+                elif 5<i:
+                    h += 7
+                
+                WINDOW.blit(nums_text, (w, h))
                 
     pygame.display.update()
 
@@ -95,5 +112,5 @@ def main():
         
         draw_window()
         
-# main()
+main()
 # print(pygame.font.get_fonts())

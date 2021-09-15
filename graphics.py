@@ -22,6 +22,7 @@ pygame.display.set_caption("Sudoku")
 
 FPS = 60
 z = -1
+square_clicked = False
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -30,7 +31,7 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 def draw_window(mouse_click):
-    global z
+    global z, square_clicked
     WINDOW.fill(WHITE)  # white area is (650 x 650) 
     # bottom bar
     pygame.draw.rect(WINDOW, BLACK, (0, HEIGHT-100, WIDTH, 100))
@@ -91,13 +92,13 @@ def draw_window(mouse_click):
 
     (border_width+5, border_width+5+70), 
     (border_width+5+71, border_width+5+70), 
-    (border_width+5+71*2+1, border_width+5+70), 
+    (border_width+5+71*2+2, border_width+5+70), 
     (border_width+5+72*3+3, border_width+5+70), 
     (border_width+5+72*4+1, border_width+5+70), 
     (border_width+5+72*5+2, border_width+5+70), 
     (border_width+5+72*6+5, border_width+5+70), 
     (border_width+5+72*7+4, border_width+5+70), 
-    (border_width+5+72*8+4, border_width+5+70),
+    (border_width+5+72*8+5, border_width+5+70),
 
     (border_width+5, border_width+9+70*2), 
     (border_width+5+71, border_width+8+70*2), 
@@ -123,13 +124,13 @@ def draw_window(mouse_click):
 
     (border_width+5, border_width+5+70*4+9), 
     (border_width+5+71, border_width+5+70*4+9), 
-    (border_width+5+71*2+1, border_width+5+70*4+9), 
+    (border_width+5+71*2+2, border_width+5+70*4+9), 
     (border_width+5+72*3+3, border_width+5+70*4+9), 
     (border_width+5+72*4+1, border_width+5+70*4+9), 
     (border_width+5+72*5+2, border_width+5+70*4+9), 
     (border_width+5+72*6+5, border_width+5+70*4+9), 
     (border_width+5+72*7+4, border_width+5+70*4+9), 
-    (border_width+5+72*8+4, border_width+5+70*4+9),
+    (border_width+5+72*8+5, border_width+5+70*4+9),
 
 
     (border_width+5, border_width+8+70*5+9), 
@@ -186,13 +187,13 @@ def draw_window(mouse_click):
 
 ((border_width+5, border_width+5+71), (border_width+5+70, border_width+5+70+73)),
 ((border_width+5+71, border_width+5+71+73), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+71*2+1, border_width+5+71*2+1+71), (border_width+5+70, border_width+5+70+73)),
+((border_width+5+71*2+2, border_width+5+71*2+2+71), (border_width+5+70, border_width+5+70+73)),
 ((border_width+5+72*3+3, border_width+5+71*3+3+71), (border_width+5+70, border_width+5+70+73)),
 ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70, border_width+5+70+73)),
 ((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70, border_width+5+70+73)),
 ((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70, border_width+5+70+73)),
 ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*8+4, border_width+5+72*8+4+71), (border_width+5+70, border_width+5+70+73)),
+((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70, border_width+5+70+73)),
 
 ((border_width+5, border_width+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
 ((border_width+5+71, border_width+5+71+73), (border_width+8+70*2, border_width+8+70*2+71)),
@@ -216,13 +217,13 @@ def draw_window(mouse_click):
 
 ((border_width+5, border_width+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 ((border_width+5+71, border_width+5+71+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*2+1, border_width+5+72*2+1+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+((border_width+5+72*2+2, border_width+5+72*2+2+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 ((border_width+5+72*3+3, border_width+5+72*3+3+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 ((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 ((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*8+4, border_width+5+72*8+4+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
 
 ((border_width+5, border_width+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
 ((border_width+5+71, border_width+5+71+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
@@ -269,8 +270,12 @@ def draw_window(mouse_click):
         for x in range(len(boxes)):
             if boxes[x][0][0] <= mouse_click[0] <= boxes[x][0][1] and\
             boxes[x][1][0] <= mouse_click[1] <= boxes[x][1][1]:
-                z = x 
-    
+                if square_clicked and z == x:
+                    square_clicked = False
+                else:
+                    square_clicked = True
+                z = x     
+
     # match mouse click with a square
     visitedfirst2ifs = False  # this is if we visit the first 2 if statements but dont wanna go to the elif/else
     if z % 3 == 1 and not (54 < z < 64):
@@ -297,7 +302,10 @@ def draw_window(mouse_click):
         boxh = 70
         # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], 70, 70))
     if z != -1:
-        pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], boxw, boxh))
+        if square_clicked:
+            pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], boxw, boxh))
+        # else:
+        #     pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], boxw, boxh))
     
     nums_font = pygame.font.SysFont('calibri', 50, False)
 

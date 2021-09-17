@@ -23,6 +23,97 @@ pygame.display.set_caption("Sudoku")
 FPS = 60
 z = -1
 square_clicked = False
+border_width = 10
+boxes = [((border_width+5, border_width+5+70), (border_width+5, border_width+5+70)),
+    ((border_width+78, border_width+78+73), (border_width+5, border_width+5+71)),
+    ((border_width+9+70*2, border_width+9+70*2+70), (border_width+5, border_width+5+70)),
+    ((border_width+8+72*3, border_width+8+72*3+70), (border_width+5, border_width+5+70)),
+    ((border_width+6+72*4, border_width+6+72*4+73), (border_width+5, border_width+5+71)),
+    ((border_width+7+72*5, border_width+7+72*5+70), (border_width+5, border_width+5+70)),
+    ((border_width+10+72*6, border_width+10+72*6+70), (border_width+5, border_width+5+70)),
+    ((border_width+9+72*7, border_width+9+72*7+73), (border_width+5, border_width+5+71)),
+    ((border_width+10+72*8, border_width+10+72*8+70), (border_width+5, border_width+5+70)),
+
+    ((border_width+5, border_width+5+71), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+71*2+2, border_width+5+71*2+2+71), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+72*3+3, border_width+5+71*3+3+71), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70, border_width+5+70+73)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70, border_width+5+70+73)),
+
+    ((border_width+5, border_width+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+8+70*2, border_width+8+70*2+71)),
+    ((border_width+5+72*2, border_width+5+72*2+70), (border_width+8+70*2, border_width+8+70*2+70)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+8+70*2, border_width+8+70*2+70)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+8+70*2, border_width+8+70*2+71)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+8+70*2, border_width+8+70*2+70)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+8+70*2, border_width+8+70*2+71)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
+
+    ((border_width+5, border_width+5+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+5+70*3+8, border_width+5+70*3+8+71)),
+    ((border_width+5+72*2, border_width+5+72*2+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*3+8, border_width+5+70*3+8+71)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*3+8, border_width+5+70*3+8+71)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
+
+    ((border_width+5, border_width+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*2+2, border_width+5+72*2+2+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
+
+    ((border_width+5, border_width+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
+    ((border_width+5+72*2, border_width+5+72*2+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
+
+    ((border_width+5, border_width+5+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*2, border_width+5+72*2+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
+
+    ((border_width+5, border_width+5+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+5+70*7+18, border_width+5+70*7+18+71)),
+    ((border_width+5+72*2, border_width+5+72*2+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*7+18, border_width+5+70*7+18+71)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*7+18, border_width+5+70*7+18+71)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
+
+    ((border_width+5, border_width+5+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
+    ((border_width+5+71, border_width+5+71+73), (border_width+5+70*8+19, border_width+5+70*8+19+71)),
+    ((border_width+5+72*2, border_width+5+72*2+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
+    ((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
+    ((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*8+19, border_width+5+70*8+19+71)),
+    ((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
+    ((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
+    ((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*8+19, border_width+5+70*8+19+71)),
+    ((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
+    ]
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -37,7 +128,7 @@ def draw_window(mouse_click):
     pygame.draw.rect(WINDOW, BLACK, (0, HEIGHT-100, WIDTH, 100))
     
     # border:
-    border_width = 10
+    # border_width = 10
     box_width = WIDTH - 2*border_width #650
     # grid = pygame.transform.scale(pygame.image.load('mygrid.png'), (660, 660))#(WIDTH-border_width*2-2, HEIGHT-border_width*2-100-2))
     WINDOW.blit(pygame.image.load('mygridnew.png'), (border_width, border_width)) #put grid for 1st param 
@@ -174,107 +265,17 @@ def draw_window(mouse_click):
     (border_width+5+72*7+4, border_width+5+70*8+19), 
     (border_width+5+72*8+5, border_width+5+70*8+19)
     ]
-
-    boxes = [((border_width+5, border_width+5+70), (border_width+5, border_width+5+70)),
-((border_width+78, border_width+78+73), (border_width+5, border_width+5+71)),
-((border_width+9+70*2, border_width+9+70*2+70), (border_width+5, border_width+5+70)),
-((border_width+8+72*3, border_width+8+72*3+70), (border_width+5, border_width+5+70)),
-((border_width+6+72*4, border_width+6+72*4+73), (border_width+5, border_width+5+71)),
-((border_width+7+72*5, border_width+7+72*5+70), (border_width+5, border_width+5+70)),
-((border_width+10+72*6, border_width+10+72*6+70), (border_width+5, border_width+5+70)),
-((border_width+9+72*7, border_width+9+72*7+73), (border_width+5, border_width+5+71)),
-((border_width+10+72*8, border_width+10+72*8+70), (border_width+5, border_width+5+70)),
-
-((border_width+5, border_width+5+71), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+71, border_width+5+71+73), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+71*2+2, border_width+5+71*2+2+71), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*3+3, border_width+5+71*3+3+71), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70, border_width+5+70+73)),
-((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70, border_width+5+70+73)),
-
-((border_width+5, border_width+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
-((border_width+5+71, border_width+5+71+73), (border_width+8+70*2, border_width+8+70*2+71)),
-((border_width+5+72*2, border_width+5+72*2+70), (border_width+8+70*2, border_width+8+70*2+70)),
-((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+8+70*2, border_width+8+70*2+70)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+8+70*2, border_width+8+70*2+71)),
-((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+8+70*2, border_width+8+70*2+70)),
-((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+8+70*2, border_width+8+70*2+71)),
-((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+8+70*2, border_width+8+70*2+70)),
-
-((border_width+5, border_width+5+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
-((border_width+5+71, border_width+5+71+73), (border_width+5+70*3+8, border_width+5+70*3+8+71)),
-((border_width+5+72*2, border_width+5+72*2+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
-((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*3+8, border_width+5+70*3+8+71)),
-((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
-((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*3+8, border_width+5+70*3+8+71)),
-((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+5+70*3+8, border_width+5+70*3+8+70)),
-
-((border_width+5, border_width+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+71, border_width+5+71+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*2+2, border_width+5+72*2+2+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*3+3, border_width+5+72*3+3+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70*4+9, border_width+5+70*4+9+73)),
-
-((border_width+5, border_width+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
-((border_width+5+71, border_width+5+71+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
-((border_width+5+72*2, border_width+5+72*2+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
-((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
-((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
-((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+8+70*5+9, border_width+8+70*5+9+71)),
-((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+8+70*5+9, border_width+8+70*5+9+70)),
-
-((border_width+5, border_width+5+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+71, border_width+5+71+73), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*2, border_width+5+72*2+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+5+70*6+18, border_width+5+70*6+18+70)),
-
-((border_width+5, border_width+5+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
-((border_width+5+71, border_width+5+71+73), (border_width+5+70*7+18, border_width+5+70*7+18+71)),
-((border_width+5+72*2, border_width+5+72*2+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
-((border_width+5+72*3+3, border_width+5+72*3+3+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*7+18, border_width+5+70*7+18+71)),
-((border_width+5+72*5+2, border_width+5+72*5+2+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
-((border_width+5+72*6+5, border_width+5+72*6+5+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*7+18, border_width+5+70*7+18+71)),
-((border_width+5+72*8+5, border_width+5+72*8+5+71), (border_width+5+70*7+18, border_width+5+70*7+18+73)),
-
-((border_width+5, border_width+5+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
-((border_width+5+71, border_width+5+71+73), (border_width+5+70*8+19, border_width+5+70*8+19+71)),
-((border_width+5+72*2, border_width+5+72*2+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
-((border_width+5+72*3+3, border_width+5+72*3+3+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
-((border_width+5+72*4+1, border_width+5+72*4+1+73), (border_width+5+70*8+19, border_width+5+70*8+19+71)),
-((border_width+5+72*5+2, border_width+5+72*5+2+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
-((border_width+5+72*6+5, border_width+5+72*6+5+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
-((border_width+5+72*7+4, border_width+5+72*7+4+73), (border_width+5+70*8+19, border_width+5+70*8+19+71)),
-((border_width+5+72*8+5, border_width+5+72*8+5+70), (border_width+5+70*8+19, border_width+5+70*8+19+70)),
-]
     
     if mouse_click:
-        for x in range(len(boxes)):
-            if boxes[x][0][0] <= mouse_click[0] <= boxes[x][0][1] and\
-            boxes[x][1][0] <= mouse_click[1] <= boxes[x][1][1]:
-                if square_clicked and z == x:
-                    square_clicked = False
-                else:
-                    square_clicked = True
-                z = x     
+        # for x in range(len(boxes)):
+        #     if boxes[x][0][0] <= mouse_click[0] <= boxes[x][0][1] and\
+        #     boxes[x][1][0] <= mouse_click[1] <= boxes[x][1][1]:
+        #         if square_clicked and z == x:
+        #             square_clicked = False
+        #         else:
+        #             square_clicked = True
+                # z = x   
+        z = find_square_clicked(mouse_click, False)
 
     # match mouse click with a square
     visitedfirst2ifs = False  # this is if we visit the first 2 if statements but dont wanna go to the elif/else
@@ -304,9 +305,7 @@ def draw_window(mouse_click):
     if z != -1:
         if square_clicked:
             pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], boxw, boxh))
-        # else:
-        #     pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], boxw, boxh))
-    
+            
     nums_font = pygame.font.SysFont('calibri', 50, False)
 
     for i in range(boardObj.size):
@@ -337,6 +336,7 @@ def draw_window(mouse_click):
 
 
 def main():
+    global square_clicked
     clock = pygame.time.Clock()
     click = False
     
@@ -353,6 +353,7 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
+                    click_pos = mouse_pos
                     draw_window(mouse_pos)
                     # print(mouse_pos)
 
@@ -360,10 +361,68 @@ def main():
                 if event.button == 1:
                     click = False
 
-        
+            if event.type == pygame.KEYDOWN and square_clicked:
+                if event.key == pygame.K_1:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 1
+
+                if event.key == pygame.K_2:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 2
+
+                if event.key == pygame.K_3:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 3
+
+                if event.key == pygame.K_4:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 4
+
+                if event.key == pygame.K_5:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 5
+
+                if event.key == pygame.K_6:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 6
+
+                if event.key == pygame.K_7:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 7
+                
+                if event.key == pygame.K_8:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 8
+
+                if event.key == pygame.K_9:
+                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
+                    index = find_square_clicked(click_pos, True)
+                    boardObj.board[index//9][index%9] = 9
+
         draw_window(None)
-        
-        
+
+
+def find_square_clicked(position, typing):  # returns the index of the box, typing is true if the user is typing a num
+    global square_clicked
+
+    for x in range(len(boxes)):
+            if boxes[x][0][0] <= position[0] <= boxes[x][0][1] and\
+            boxes[x][1][0] <= position[1] <= boxes[x][1][1]:
+                if square_clicked and z == x and not typing:
+                    square_clicked = False
+                else:
+                    square_clicked = True
+                return x
+    return -1
+
 main()
 # print(pygame.font.get_fonts())
 

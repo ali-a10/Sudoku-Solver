@@ -11,6 +11,8 @@ class Board:
                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
                         [0, 0, 0, 0, 0, 0, 0, 0 ,0]  ]
+        
+        self.solved_board = []  # call a function to solve it
         self.size = len(self.board)
 
 
@@ -56,3 +58,4 @@ class Board:
                 self.board[pos[0]][pos[1]] = num_in_pos
                 i += 1
                 starting_num_count[num_in_pos] += 1
+        return starting_slots_pos

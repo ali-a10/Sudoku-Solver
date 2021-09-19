@@ -1,20 +1,11 @@
 import pygame
 from Board import *
 
-# from rough import *
-
 boardObj = Board()
-boardObj.set_board(1)
+starting_slots = boardObj.set_board(1)
+
 ############## MAKE SURE LINES END AT COL 80?
-# board = [  [7, 0, 8, 0, 0, 0, 0, 0 ,0], 
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0], 
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-#                         [0, 0, 0, 0, 0, 0, 0, 0 ,0],
-#                         [0, 0, 0, 0, 0, 0, 0, 9 ,3]  ]
+
 pygame.init()
 WIDTH, HEIGHT = 680, 780
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -137,39 +128,9 @@ def draw_window(mouse_click):
     pygame.draw.rect(WINDOW, RED, (0, 0, WIDTH, border_width)) #top
     pygame.draw.rect(WINDOW, RED, (0, HEIGHT-100-border_width, WIDTH, border_width)) #bottom
 
-    # pygame.draw.line(WINDOW, GREEN, (0, 20), (14, 20))
-    # pygame.draw.line(WINDOW, GREEN, (665, 20), (679, 20))
-
-    # # big squares  (each square is 214 x 214)
-    # bigline_width = 3
-    # bigsquare_width = (box_width - 2*bigline_width) / 3  #214
-    # pygame.draw.line(WINDOW, BLACK, (bigsquare_width+border_width, border_width), (bigsquare_width+border_width, box_width+border_width), bigline_width) #214 = (650-8)/3
-    # pygame.draw.line(WINDOW, BLACK, (bigsquare_width*2+border_width+bigline_width, border_width), (bigsquare_width*2+border_width+bigline_width, box_width+border_width), bigline_width)
-    # pygame.draw.line(WINDOW, BLACK, (border_width, bigsquare_width+border_width), (box_width+border_width, bigsquare_width+border_width), bigline_width)
-    # pygame.draw.line(WINDOW, BLACK, (border_width, bigsquare_width*2+border_width+bigline_width), (box_width+border_width, bigsquare_width*2+border_width+bigline_width), bigline_width)
-    # #### small squares (71.333 x 71.333)
-    # # small vertical lines
-    # smallsquare_width = bigsquare_width/3  #71.333
-    # pygame.draw.line(WINDOW, BLUE, (smallsquare_width+border_width, border_width), (smallsquare_width+border_width, box_width+border_width))
-    # pygame.draw.line(WINDOW, BLUE, (smallsquare_width*2+border_width, border_width), (smallsquare_width*2+border_width, box_width+border_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width+smallsquare_width, border_width), (border_width+bigsquare_width+smallsquare_width, border_width+box_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width+smallsquare_width*2+1, border_width), (border_width+bigsquare_width+smallsquare_width*2+1, border_width+box_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width, border_width), (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width, border_width+box_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1, border_width), (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1, border_width+box_width))
-    # # small horizontal lines
-    # pygame.draw.line(WINDOW, BLUE, (border_width, smallsquare_width+border_width), (border_width+box_width, smallsquare_width+border_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width, smallsquare_width*2+border_width), (border_width+box_width, smallsquare_width*2+border_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width+smallsquare_width), (border_width+box_width, border_width+bigsquare_width+smallsquare_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width+smallsquare_width*2+1), (border_width+box_width, border_width+bigsquare_width+smallsquare_width*2+1))
-    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width), (border_width+box_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width))
-    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1), (border_width+box_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1))
     
-
-
-
     ###### THIS IS TO HIGHLIGHT A BOX
     small_box_width = 69
-    # pygame.draw.rect(WINDOW, (155, 155, 155), (border_width+5, border_width+5, 69, 69))
 
     boxes_starting_corners = [(border_width+5, border_width+5), 
     (border_width+7+69, border_width+5),
@@ -267,14 +228,6 @@ def draw_window(mouse_click):
     ]
     
     if mouse_click:
-        # for x in range(len(boxes)):
-        #     if boxes[x][0][0] <= mouse_click[0] <= boxes[x][0][1] and\
-        #     boxes[x][1][0] <= mouse_click[1] <= boxes[x][1][1]:
-        #         if square_clicked and z == x:
-        #             square_clicked = False
-        #         else:
-        #             square_clicked = True
-                # z = x   
         z = find_square_clicked(mouse_click, False)
 
     # match mouse click with a square
@@ -283,25 +236,20 @@ def draw_window(mouse_click):
         boxw = 73
         boxh = 71
         visitedfirst2ifs = True
-        # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], 73, 71))
     if z == 55 or z == 58 or z == 61 or z == 1 or z == 4 or z == 7 or\
         z == 73 or z == 76 or z == 79:
         boxw = 73
         boxh = 70
         visitedfirst2ifs = True
-        # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], 73, 70))
     if z == 10 or z == 13 or z == 16 or z == 37 or z == 40 or z == 43:
         boxw = 73
         boxh = 73
-        # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], 73, 73))
     elif 8 < z < 18 or 35 < z < 45 or 62 < z < 72 and not visitedfirst2ifs:
         boxw = 70
         boxh = 73
-        # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], 71, 73))
     elif not visitedfirst2ifs:
         boxw = 70
         boxh = 70
-        # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], 70, 70))
     if z != -1:
         if square_clicked:
             pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[z][0], boxes_starting_corners[z][1], boxw, boxh))
@@ -313,15 +261,12 @@ def draw_window(mouse_click):
             if boardObj.board[i][j] != 0:
                 nums_text = nums_font.render(str(boardObj.board[i][j]), 1, BLUE)
                 if (2<j<6):
-                    # WINDOW.blit(nums_text, (17+24+j*72, 15+14+i*72))
                     w = 15+24+j*72
                     h = 15+14+i*72
                 elif (5<j):
-                    # WINDOW.blit(nums_text, (19+24+j*72.2, 15+14+i*72))
                     w = 17+24+j*72.2
                     h = 15+14+i*72
                 else:
-                    # WINDOW.blit(nums_text, (12+24+j*72.2, 15+14+i*72))
                     w = 12+24+j*72.2
                     h = 15+14+i*72
 
@@ -333,6 +278,7 @@ def draw_window(mouse_click):
                 WINDOW.blit(nums_text, (w, h))
                 
     pygame.display.update()
+
 
 
 def main():
@@ -363,49 +309,49 @@ def main():
 
             if event.type == pygame.KEYDOWN and square_clicked:
                 if event.key == pygame.K_1:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 1
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 1
 
                 if event.key == pygame.K_2:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 2
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 2
 
                 if event.key == pygame.K_3:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 3
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 3
 
                 if event.key == pygame.K_4:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 4
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 4
 
                 if event.key == pygame.K_5:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 5
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 5
 
                 if event.key == pygame.K_6:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 6
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 6
 
                 if event.key == pygame.K_7:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 7
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 7
                 
                 if event.key == pygame.K_8:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 8
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 8
 
                 if event.key == pygame.K_9:
-                    # print("YAAAAAAAAAAAAAAAAAAAAAAA")
                     index = find_square_clicked(click_pos, True)
-                    boardObj.board[index//9][index%9] = 9
+                    if (index//9, index%9) not in starting_slots:
+                        boardObj.board[index//9][index%9] = 9
 
         draw_window(None)
 
@@ -440,3 +386,30 @@ main()
     # pygame.draw.rect(WINDOW, (155, 155, 155), (boxes_starting_corners[8][0]+71+1, boxes_starting_corners[8][1]+71*2+1, 69+1, 69+1))
     # pygame.draw.line(WINDOW, GREEN, (25, border_width+6+69+1), (25, border_width+6+69*2), 5)
     # pygame.draw.rect(WINDOW, GREEN, (border_width+5+70+1, boxes_starting_corners[0][1], 69, 69))
+
+
+
+    # # big squares  (each square is 214 x 214)
+    # bigline_width = 3
+    # bigsquare_width = (box_width - 2*bigline_width) / 3  #214
+    # pygame.draw.line(WINDOW, BLACK, (bigsquare_width+border_width, border_width), (bigsquare_width+border_width, box_width+border_width), bigline_width) #214 = (650-8)/3
+    # pygame.draw.line(WINDOW, BLACK, (bigsquare_width*2+border_width+bigline_width, border_width), (bigsquare_width*2+border_width+bigline_width, box_width+border_width), bigline_width)
+    # pygame.draw.line(WINDOW, BLACK, (border_width, bigsquare_width+border_width), (box_width+border_width, bigsquare_width+border_width), bigline_width)
+    # pygame.draw.line(WINDOW, BLACK, (border_width, bigsquare_width*2+border_width+bigline_width), (box_width+border_width, bigsquare_width*2+border_width+bigline_width), bigline_width)
+    # #### small squares (71.333 x 71.333)
+    # # small vertical lines
+    # smallsquare_width = bigsquare_width/3  #71.333
+    # pygame.draw.line(WINDOW, BLUE, (smallsquare_width+border_width, border_width), (smallsquare_width+border_width, box_width+border_width))
+    # pygame.draw.line(WINDOW, BLUE, (smallsquare_width*2+border_width, border_width), (smallsquare_width*2+border_width, box_width+border_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width+smallsquare_width, border_width), (border_width+bigsquare_width+smallsquare_width, border_width+box_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width+smallsquare_width*2+1, border_width), (border_width+bigsquare_width+smallsquare_width*2+1, border_width+box_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width, border_width), (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width, border_width+box_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1, border_width), (border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1, border_width+box_width))
+    # # small horizontal lines
+    # pygame.draw.line(WINDOW, BLUE, (border_width, smallsquare_width+border_width), (border_width+box_width, smallsquare_width+border_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width, smallsquare_width*2+border_width), (border_width+box_width, smallsquare_width*2+border_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width+smallsquare_width), (border_width+box_width, border_width+bigsquare_width+smallsquare_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width+smallsquare_width*2+1), (border_width+box_width, border_width+bigsquare_width+smallsquare_width*2+1))
+    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width), (border_width+box_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width))
+    # pygame.draw.line(WINDOW, BLUE, (border_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1), (border_width+box_width, border_width+bigsquare_width*2+bigline_width*2+smallsquare_width*2+1))
+    
